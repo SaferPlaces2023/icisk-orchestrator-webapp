@@ -3,8 +3,8 @@ import os
 import streamlit as st
 
 from icisk_orchestrator_db import DBI
-from .. import langgraph_interface as lgi
-from ..session.state import session_manager
+from icisk_orchestrator_webapp import langgraph_interface as lgi
+from icisk_orchestrator_webapp.session.state import session_manager
 
 
 

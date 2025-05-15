@@ -10,9 +10,9 @@ import nest_asyncio; nest_asyncio.apply()
 import asyncio
 import streamlit as st
 
-from .. import utils
-from .. import langgraph_interface as lgi
-from ..session.state import session_manager, Interrupt
+from icisk_orchestrator_webapp import utils
+from icisk_orchestrator_webapp import langgraph_interface as lgi
+from icisk_orchestrator_webapp.session.state import session_manager, Interrupt
 
 from icisk_orchestrator_db import DBI, DBS
 

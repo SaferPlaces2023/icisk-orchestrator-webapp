@@ -7,7 +7,7 @@ import streamlit as st
 
 from icisk_orchestrator_db import DBI, DBS
 from icisk_orchestrator_agent.nodes.base.base_tool_interrupt import BaseToolInterrupt
-from .. import langgraph_interface as lgi
+from icisk_orchestrator_webapp import langgraph_interface as lgi
 
 
 
