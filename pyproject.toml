@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "icisk-orchestrator-webapp"
+version = "0.1.0"
+description = "WebApp streamlit interface for ICisk-Orchestrator project"
+authors = [
+    { name="Tommaso Redaelli", email="tommaso.redaelli@gecosistema.com" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "asyncio",
+    "nest-asyncio",
+
+    "langgraph-sdk",
+
+    "streamlit",
+    
+    "nbformat",
+    "nbconvert",
+
+    "icisk-orchestrator-db @ git+https://github.com/SaferPlaces2023/icisk-orchestrator-db.git"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "mypy"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

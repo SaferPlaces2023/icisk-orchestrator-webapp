@@ -1,0 +1,5 @@
+# Vritual environment
+venv/
+
+# Test folder
+tests/

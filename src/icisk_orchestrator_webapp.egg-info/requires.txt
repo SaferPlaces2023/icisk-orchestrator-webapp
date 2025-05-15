@@ -1,0 +1,12 @@
+asyncio
+nest-asyncio
+langgraph-sdk
+streamlit
+nbformat
+nbconvert
+icisk-orchestrator-db@ git+https://github.com/SaferPlaces2023/icisk-orchestrator-db.git
+
+[dev]
+pytest
+black
+mypy
