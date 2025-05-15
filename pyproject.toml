@@ -23,7 +23,10 @@ dependencies = [
     "nbformat",
     "nbconvert",
 
-    "icisk-orchestrator-db @ git+https://github.com/SaferPlaces2023/icisk-orchestrator-db.git"
+    "python-dotenv",
+
+    "icisk-orchestrator-db @ git+https://github.com/SaferPlaces2023/icisk-orchestrator-db.git",
+    "icisk-orchestrator-agent @ git+https://github.com/SaferPlaces2023/icisk-orchestrator-agent.git"
 ]
 
 [project.optional-dependencies]

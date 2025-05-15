@@ -6,7 +6,7 @@ import asyncio
 import streamlit as st
 
 from icisk_orchestrator_db import DBI, DBS
-from agent.nodes.base.base_tool_interrupt import BaseToolInterrupt
+from icisk_orchestrator_agent.nodes.base.base_tool_interrupt import BaseToolInterrupt
 from .. import langgraph_interface as lgi
 
 

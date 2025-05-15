@@ -13,7 +13,9 @@ Requires-Dist: langgraph-sdk
 Requires-Dist: streamlit
 Requires-Dist: nbformat
 Requires-Dist: nbconvert
+Requires-Dist: python-dotenv
 Requires-Dist: icisk-orchestrator-db@ git+https://github.com/SaferPlaces2023/icisk-orchestrator-db.git
+Requires-Dist: icisk-orchestrator-agent@ git+https://github.com/SaferPlaces2023/icisk-orchestrator-agent.git
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: black; extra == "dev"
