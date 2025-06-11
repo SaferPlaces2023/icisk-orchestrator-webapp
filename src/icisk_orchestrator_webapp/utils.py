@@ -7,6 +7,11 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 
+class StaticPaths():
+    
+    ICISK_LOGO = 'src/icisk_orchestrator_webapp/static/imgs/icisk-logo.png'
+
+
 
 def tool_args_md_table(args_dict):
     if all([v is None for k,v in args_dict.items()]):
@@ -66,16 +71,19 @@ def css_component(component, key: str, css_dict: dict[str, str], **component_arg
     Returns:
     - The rendered component with custom CSS styles.
     """
-    css = "\n".join([f"{k}: {v};" for k, v in css_dict.items()])
-    st.markdown(
-        f"""
-        <style>
-        .st-key-{key} {{
-            {css}
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-    return component(key=key, **component_args)
+    if css_dict is None or len(css_dict) == 0:
+        return component(key=key, **component_args)
+    else:
+        css = "\n".join([f"{k}: {v};" for k, v in css_dict.items()])
+        st.markdown(
+            f"""
+            <style>
+            .st-key-{key} {{
+                {css}
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+        return component(key=key, **component_args)
     

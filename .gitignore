@@ -6,6 +6,7 @@ venv/
 
 # Test folder
 tests/
+src/icisk_orchestrator_webapp/pages/_sandbox.py
 
 # Python cache
 **/__pycache__/

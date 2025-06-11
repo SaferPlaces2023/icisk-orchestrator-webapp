@@ -19,11 +19,17 @@ from icisk_orchestrator_db import DBI, DBS
 
 
 st.set_page_config(page_title="ICisk AI Orchestrator", page_icon="🧠", layout="wide")
-st.markdown("### 🧠 ICisk AI Orchestrator")
+
+
+st.markdown('### 🧠 I-CISK AI Agent Climate Service Composer')
+st.markdown('##### AI-Automated Creation of Climate Services Using I-CISK Tools and Copernicus Data')
 
 
 with st.sidebar:
     
+    st.image(utils.StaticPaths.ICISK_LOGO, use_container_width=True)
+    st.divider()
+
     # DOC: Sidebar element used as a menu for the user
     with st.expander("**🚀 Quick actions**", expanded=True):
         if st.button("New chat", type="primary", help="Start a new chat"):
@@ -120,6 +126,11 @@ with st.sidebar:
                     )
                 st.rerun()
 
+    st.divider()
+                
+    # DOC: Link to the documentation
+    st.link_button(label='📚 **Open documentation**', url='https://bottlenose-periodical-f97.notion.site/I-CISK-Orchestrator-Docs-1f9b0175441780c8a68afb42a4bc0082', type='tertiary')
+
 
 
 with st.expander("# 💡 **What is this application?** "):
@@ -140,14 +151,12 @@ with st.expander("# 💡 **What is this application?** "):
         """
     )
 
-    
 
 for message in session_manager.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         
 
-    
 def render_message(role, content):
     avatar = {
         "user": None,
@@ -192,11 +201,61 @@ def handle_response(response):
         
         if message is not None and message.get('type', None) != 'system':
             render_agent_response(message)
-            
 
-prompt = st.chat_input(key="chat-input", placeholder="Scrivi un messaggio")    
-            
-if prompt:
+
+on_entry_examples = [
+    {
+        'title': '##### 1️ Calculate the Standardized Precipitation Index (SPI)',
+        'message': 'You can specify the parameters for the SPI calculation, such as the location, and time period. I will guide you through the process step by step.',
+        'as_user_request': 'Please, calculate the Standardized Precipitation Index (SPI)',
+        'button': '**Start SPI Calculation 💧**',
+        'key': 'start-spi-btn'
+    },
+    {
+        'title': '##### 2️⃣ Get the seasonal forecast data for temperature and precipitation',
+        'message': 'You can specify the parameters for the seasonal forecast, such as the location, and time period. I will guide you through the process step by step.',
+        'button': '**Start seasonal forecast retrieval 🌡️**',
+        'as_user_request': 'Can you retrieve the seasonal forecast data for temperature and precipitation?',
+        'key': 'start-seasonal-forecast-btn',
+    },
+    {
+        'title': '##### 3️⃣ Get the GloFAS river discharge forecast data',
+        'message': 'You can specify the parameters for the river discharge forecast, such as the location, and time period. I will guide you through the process step by step.',
+        'button': '**Start river discharge forecast retrieval 🌊**',
+        'as_user_request': 'Get data on river discharge forecast',
+        'key': 'start-river-discharge-btn',
+    },
+    {
+        'title': '##### 4️⃣ Open a notebook and generate a plot to visualize datasets statistics',
+        'message': 'You can specify the parameters for the notebook, such as the location, and time period. I will guide you through the process step by step.',
+        'as_user_request': 'Please, open a notebook and generate a plot to visualize datasets statistics',
+        'button': '**Start code generation 💻**',
+        'key': 'start-notebook-btn',
+    }
+]
+
+
+if (session_manager.chat_history is None or len(session_manager.chat_history) == 0) and st.session_state.get('on_entry_selected_message', None) is None:
+    with st.chat_message('ai'):
+        on_entry_cols = st.columns([1 for _ in range(len(on_entry_examples))], gap="medium", border=True)
+        for eeidx, on_entry_example in enumerate(on_entry_examples):
+            with on_entry_cols[eeidx]:
+                with st.container(key=f"container-{on_entry_example['key']}"):
+                    st.markdown(on_entry_example['title'])
+                    st.markdown(on_entry_example['message'])
+                    if st.button(on_entry_example['button'], key=on_entry_example['key']): #, on_click=on_entry_example_selected, args=(on_entry_example['as_user_request'],), help="Start the example interaction")
+                       st.session_state['on_entry_selected_message'] = on_entry_example['as_user_request']
+                       st.rerun()
+
+
+prompt = st.chat_input(key="chat-input", placeholder="Scrivi un messaggio")   
+    
+if prompt or st.session_state.get('on_entry_selected_message', None) is not None:
+    
+    on_entry_selected_message = st.session_state.pop('on_entry_selected_message', None)
+    if on_entry_selected_message is not None:
+        prompt = on_entry_selected_message
+    
     session_manager.update_chat({"type": "human", "content": prompt})
     render_user_prompt(prompt)
     
