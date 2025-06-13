@@ -205,7 +205,7 @@ def handle_response(response):
 
 on_entry_examples = [
     {
-        'title': '##### 1️ Calculate the Standardized Precipitation Index (SPI)',
+        'title': '##### 1️⃣ Calculate the Standardized Precipitation Index (SPI)',
         'message': 'You can specify the parameters for the SPI calculation, such as the location, and time period. I will guide you through the process step by step.',
         'as_user_request': 'Please, calculate the Standardized Precipitation Index (SPI)',
         'button': '**Start SPI Calculation 💧**',
