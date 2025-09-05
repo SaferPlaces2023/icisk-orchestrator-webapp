@@ -1,11 +1,15 @@
 import os
 
+import logging
+
 import nbformat as nbf
 from nbconvert import HTMLExporter
 
 import streamlit as st
 import streamlit.components.v1 as components
 
+
+LOGGER_WA = logging.getLogger(__name__)
 
 class StaticPaths():
     
@@ -87,3 +91,14 @@ def css_component(component, key: str, css_dict: dict[str, str], **component_arg
         )
         return component(key=key, **component_args)
     
+
+def log(message: str, level: int = logging.INFO, *args, **kwargs) -> None:
+    """
+    Log a message with the specified logging level.
+    
+    Args:
+        message (str): The message to log.
+        level (int): The logging level.
+    """
+    
+    LOGGER_WA.log(level, message, *args, **kwargs)

@@ -1,13 +1,15 @@
 import os
 from langgraph_sdk.client import get_client, LangGraphClient, Command
 
+from . import utils
+
 
 LANGGRAPH_HOST = os.environ.get("LANGGRAPH_HOST", "http://localhost:2024")
 
 
 def get_langgraph_client():
     client = get_client(url=LANGGRAPH_HOST)
-    print(f"Connected to LangGraph at {LANGGRAPH_HOST}")
+    utils.log(f"Connected to LangGraph at {LANGGRAPH_HOST}")
     return client
 
     
@@ -20,7 +22,7 @@ async def create_thread(client, user_id):
         stream_mode = "updates",
         input = { 'user_id': user_id }
     )
-    print(f"Thread {thread_id} assigned to user {user_id}")
+    utils.log(f"Thread {thread_id} assigned to user {user_id}")
     return thread['thread_id']
 
 
@@ -52,6 +54,6 @@ async def ask_agent(
         if chunk.event == "updates":
             
             # Logger.info(fmsg("Received updates from agent", m=chunk.data, s=1, ls=True, pp=True))
-            print(f'\n\nReceived updates from agent: {chunk.data} \n\n')
+            utils.log(f'\n\nReceived updates from agent: {chunk.data} \n\n')
             
             yield chunk.data
