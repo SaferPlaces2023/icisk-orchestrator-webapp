@@ -34,10 +34,24 @@ with center_col:
     
     st.divider()
     
-    st.markdown('<div><h2 style="text-align: center; margin-bottom: 5%">🔐 ICisk AI Orchestrator — Login</h2>', unsafe_allow_html=True)
+    st.markdown('''
+        <div style="text-align: center; margin-bottom: 1%">
+            <h2>LLM-based AUTO Climate Service Composer</h2>
+        </div>
+    ''', unsafe_allow_html=True)
+
+    st.markdown('''
+        <div style="text-align: center; margin-bottom: 3%">
+            <h5>Login 🔐</h5>
+        </div>
+    ''', unsafe_allow_html=True)
+
 
     with st.form("login-form"):
-        st.markdown("Please enter your user ID to log in. If you don't have an account, please contact the administrator.")
+        st.markdown(
+            'Enter your user ID to log in. In case you want to test the service please [<a href="https://icisk.eu/contact/" target="_blank">contact us</a>](#).',
+            unsafe_allow_html=True
+        )
         
         user_id = st.text_input("User ID", placeholder="your-icisk-ai-agent-user-id")
 

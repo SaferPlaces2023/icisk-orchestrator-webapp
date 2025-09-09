@@ -21,7 +21,7 @@ from icisk_orchestrator_db import DBI, DBS
 st.set_page_config(page_title="ICisk AI Orchestrator", page_icon="🧠", layout="wide")
 
 
-st.markdown('### 🧠 I-CISK AI Agent Climate Service Composer')
+st.markdown('### 🧠 LLM-based AUTO Climate Service Composer')
 st.markdown('##### AI-Automated Creation of Climate Services Using I-CISK Tools and Copernicus Data')
 
 
@@ -129,7 +129,8 @@ with st.sidebar:
     st.divider()
                 
     # DOC: Link to the documentation
-    st.link_button(label='📚 **Open documentation**', url='https://bottlenose-periodical-f97.notion.site/I-CISK-Orchestrator-Docs-1f9b0175441780c8a68afb42a4bc0082', type='tertiary')
+    st.link_button(label='💻 **Technical documentation**', url='https://bottlenose-periodical-f97.notion.site/I-CISK-Orchestrator-Docs-1f9b0175441780c8a68afb42a4bc0082', type='tertiary')
+    st.link_button(label='📚 **User manual**', url='https://bottlenose-periodical-f97.notion.site/I-Cisk-Orchestartor-User-Manual-269b0175441780b4be3ffd1341db538a', type='tertiary')
 
 
 
